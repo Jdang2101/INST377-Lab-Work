@@ -35,25 +35,15 @@ async function mainEvent() { // the async keyword means we can make API requests
     // this is substituting for a "breakpoint" - it prints to the browser to tell us we successfully submitted the form
     console.log('form submission'); 
 
-    /*
-      ## GET requests and Javascript
-        We would like to send our GET request so we can control what we do with the results
-        Let's get those form results before sending off our GET request using the Fetch API
-    
-      ## Retrieving information from an API
-        The Fetch API is relatively new,
-        and is much more convenient than previous data handling methods.
-        Here we make a basic GET request to the server using the Fetch method to the county
-    */
+
 
     // Basic GET request - this replaces the form Action
     const results = await fetch('https://data.princegeorgescountymd.gov/resource/umjn-t2iz.json');
     console.log(results);
     // This changes the response from the GET into data we can use - an "object"
     currentList = await results.json();
-
-
     console.table(currentList); 
+    injectHTML(currentList);
   });
 
   filterButton.addEventListener('click', (event) => {
@@ -81,7 +71,11 @@ function getRandomIntInclusive(min, max) {
 function injectHTML(list) {
   console.log('fired injectHTML')
   const target = document.querySelector('#restaurant_list');
-  
+  target.innerHTML = '';
+  list.forEach((item) => {
+    const str = `<li>${item.name}</li>`;
+    target.innerHTML += str
+  })
 }
 
 function filterList(list, query) {

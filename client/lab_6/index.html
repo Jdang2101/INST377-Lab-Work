@@ -1,9 +1,49 @@
-<!--
-    This is how to build the CSS-only load animation from loading.io    
-    <div class="lds-ellipsis"><div></div><div></div><div></div><div></div></div>
+<html lang="en">
 
-    This is helpful for showing your client-side users when data is loading,
-    since there's otherwise no sign your app is thinking about something!
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+</head>
 
-    Try placing it at the same level in your element tree as your Submit button
--->
+<body>
+    <div class="wrapper">
+        <header class="header">
+            <h1>Jimmy's INST377 Labs</h1>
+        </header>
+        <!-- Wrapper -->
+        <div class="container">
+            <!-- Wrapper -->
+            <div class="left_section box">
+                <!-- left inputs -->
+                <h2>Form Inputs</h2>
+                <form action="https://data.princegeorgescountymd.gov/resource/umjn-t2iz.json" class="box main_form">
+            <div>
+                <label for="resto">Restraunt Name</label>
+                <input type="text" id="resto" name="resto">
+            </div>
+                <button type="submit">Load Data</button>
+                <button type="button" class="filter_button">Filter Data</button>
+            </form>
+            </div>
+            <div class="right_section box">
+                <!-- right inputs -->
+                <!-- images box -->
+                <h3>Local Restuarants</h3>
+                <div class="box" id="restaurant_list">
+                    <!-- description box -->
+                    A list of local restuarant
+                </div>
+            </div>
+        </div>
+    
+        <footer class="footer">
+        <p>GitHub Username: Jdang2101, <a href="https://github.com/Jdang2101" target="_blank" rel="noopener noreferrer">Link to Jimmy Dang's GitHub Account</a></p>
+        </footer>
+    </div>
+    <script src="./script.js"></script>
+</body>
+
+</html>

@@ -26,17 +26,10 @@ function filterList(list, query) {
     const lowerCaseQuery = query.toLowerCase();
     return lowerCaseName.includes(lowerCaseQuery);
   })
-  /*
-    Using the .filter array method, 
-    return a list that is filtered by comparing the item name in lower case
-    to the query in lower case
 
-    Ask the TAs if you need help with this
-  */
 }
 
 function cutRestaurantList(list) {
-
   console.log('fired cut list');
   const range = [...Array(15).keys()];
   return newArray = range.map((item) => {

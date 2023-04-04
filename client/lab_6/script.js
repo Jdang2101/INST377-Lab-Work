@@ -63,7 +63,7 @@ async function mainEvent() {
 
   filterButton.addEventListener("click", (event) => {
     console.log("clicked FilterButton");
-
+    event.preventDefault()
     const formData = new FormData(mainForm);
     const formProps = Object.fromEntries(formData);
 

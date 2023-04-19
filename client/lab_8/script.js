@@ -41,7 +41,7 @@ function initMap(){
 
 async function mainEvent() {
   const mainForm = document.querySelector(".main_form");
-//  const loadDataButton = document.querySelector("#data_load");
+  const loadDataButton = document.querySelector("#data_load");
   const generateListButton = document.querySelector("#generate");
   consttextField = document.querySelector("#resto");
 
@@ -51,8 +51,8 @@ async function mainEvent() {
   loadAnimation.style.display = "none";
   generateListButton.classList.add("hidden");
 
-const storeData = localStorage.getItem('storedData');
-const parseData = JSON.parse(storeData);
+const storedData = localStorage.getItem('storedData');
+const parseData = JSON.parse(storedData);
 if (parseData.length > 0) {
   generateListButton.classList.remove("hidden");
 }
@@ -72,7 +72,7 @@ if (parseData.length > 0) {
     console.log(results);
 
     const storedList = await results.json();
-    localStorage.setItem('storeData', JSON.stringify(storedList));
+    localStorage.setItem('storedData', JSON.stringify(storedList));
 
 
     loadAnimation.style.display = "none";

@@ -43,7 +43,7 @@ async function mainEvent() {
   const mainForm = document.querySelector(".main_form");
   const loadDataButton = document.querySelector("#data_load");
   const generateListButton = document.querySelector("#generate");
-  consttextField = document.querySelector("#resto");
+  const textField = document.querySelector("#resto");
 
 
   const loadAnimation = document.querySelector("#data_load_animation");
@@ -51,13 +51,13 @@ async function mainEvent() {
   loadAnimation.style.display = "none";
   generateListButton.classList.add("hidden");
 
-const storedData = localStorage.getItem('storedData');
+const storedData = localStorage.getItem("storedData");
 const parseData = JSON.parse(storedData);
 if (parseData.length > 0) {
   generateListButton.classList.remove("hidden");
 }
 
-  let storedList = [];
+  // let storedList = [];
   let currentList = [];
 
   loadDataButton.addEventListener("click", async (submitEvent) => {

@@ -31,17 +31,31 @@ function cutRestaurantList(list) {
   }));
 }
 
+function initMap(){
+  const carto = L.map('map').stView([51.505, -0.09], 13);
+  L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+    maxZoom: 19,
+    attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+}).addTo(carto);
+}
+
 async function mainEvent() {
   const mainForm = document.querySelector(".main_form");
-  const filterButton = document.querySelector("#filter_button");
-  const loadDataButton = document.querySelector("#data_load");
+//  const loadDataButton = document.querySelector("#data_load");
   const generateListButton = document.querySelector("#generate");
   consttextField = document.querySelector("#resto");
+
 
   const loadAnimation = document.querySelector("#data_load_animation");
   console.log(loadAnimation);
   loadAnimation.style.display = "none";
   generateListButton.classList.add("hidden");
+
+const storeData = localStorage.getItem('storedData');
+const parseData = JSON.parse(storeData);
+if (parseData.length > 0) {
+  generateListButton.classList.remove("hidden");
+}
 
   let storedList = [];
   let currentList = [];
@@ -57,31 +71,32 @@ async function mainEvent() {
     );
     console.log(results);
 
-    storedList = await results.json();
-    if (storedList.length > 0) {
-      generateListButton.classList.remove("hidden");
-    }
+    const storedList = await results.json();
+    localStorage.setItem('storeData', JSON.stringify(storedList));
+
 
     loadAnimation.style.display = "none";
     console.table(storedList);
   });
 
-  filterButton.addEventListener("click", (event) => {
-    console.log("clicked FilterButton");
-    event.preventDefault();
-    const formData = new FormData(mainForm);
-    const formProps = Object.fromEntries(formData);
+  // filterButton.addEventListener("click", (event) => {
+  //   console.log("clicked FilterButton");
+  //   event.preventDefault();
+  //   const formData = new FormData(mainForm);
+  //   const formProps = Object.fromEntries(formData);
 
-    console.log(formProps);
-    const newList = filterList(currentList, formProps.resto);
+  //   console.log(formProps);
+  //   const newList = filterList(currentList, formProps.resto);
 
-    console.log(newList);
-    injectHTML(newList);
-    console.log("list added");
-  });
+  //   console.log(newList);
+  //   injectHTML(newList);
+  //   console.log("list added");
+  // });
 
   generateListButton.addEventListener("click", (event) => {
     console.log("generate new list");
+
+
     currentList = cutRestaurantList(storedList);
     console.log(currentList);
     injectHTML(currentList);

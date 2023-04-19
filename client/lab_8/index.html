@@ -3,8 +3,16 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <title>Jimmy's INST377 Labs</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.3/dist/leaflet.css"
+    integrity="sha256-kLaT2GOSpHechhsozzB+flnD+zUyjE2LlfWPgU04xyI="
+    crossorigin=""/>
+
     <link rel="stylesheet" href="style.css" />
+    <!--Make sure you put this AFTER Leaflet's CSS-->
+    <script src="https://unpkg.com/leaflet@1.9.3/dist/leaflet.js" integrity="sha256-WBkoXOwTeyKclOHuWtc+i2uENFpDZ9YPdf5Hf+D7ewM=" crossorigin=""></script>
+  
   </head>
 
   <body>
@@ -19,7 +27,7 @@
           <form class="box main_form">
             <button type="button" id="data_load">Load County Data</button>
             <div>
-              <label for="resto">Restraunt Name</label>
+              <label for="resto">Filter By Restraunt Name</label>
               <input type="text" name="resto" id="resto" />
             </div>
             <div class="'buttons">
@@ -31,7 +39,8 @@
         <div class="right_section box">
           <!-- right inputs -->
           <!-- images box -->
-          <h3>Local Restuarants</h3>
+          <h2>Local Restuarants</h2>
+          <div id="map" class="box"></div>
           <ol class="box" id="restaurant_list">
             <!-- description box -->
             A list of local restaurants

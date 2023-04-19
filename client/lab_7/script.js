@@ -33,7 +33,7 @@ function cutRestaurantList(list) {
 
 async function mainEvent() {
   const mainForm = document.querySelector(".main_form");
-  const filterButton = document.querySelector("#filter_button");
+  // const filterButton = document.querySelector("#filter_button");
   const loadDataButton = document.querySelector("#data_load");
   const generateListButton = document.querySelector("#generate");
   consttextField = document.querySelector("#resto");
@@ -66,19 +66,19 @@ async function mainEvent() {
     console.table(storedList);
   });
 
-  filterButton.addEventListener("click", (event) => {
-    console.log("clicked FilterButton");
-    event.preventDefault();
-    const formData = new FormData(mainForm);
-    const formProps = Object.fromEntries(formData);
+  // filterButton.addEventListener("click", (event) => {
+  //   console.log("clicked FilterButton");
+  //   event.preventDefault();
+  //   const formData = new FormData(mainForm);
+  //   const formProps = Object.fromEntries(formData);
 
-    console.log(formProps);
-    const newList = filterList(currentList, formProps.resto);
+  //   console.log(formProps);
+  //   const newList = filterList(currentList, formProps.resto);
 
-    console.log(newList);
-    injectHTML(newList);
-    console.log("list added");
-  });
+  //   console.log(newList);
+  //   injectHTML(newList);
+  //   console.log("list added");
+  // });
 
   generateListButton.addEventListener("click", (event) => {
     console.log("generate new list");

@@ -51,12 +51,6 @@ async function mainEvent() {
   loadAnimation.style.display = "none";
   generateListButton.classList.add("hidden");
 
-const storedData = localStorage.getItem("storedData");
-const parseData = JSON.parse(storedData);
-if (parseData.length > 0) {
-  generateListButton.classList.remove("hidden");
-}
-
   // let storedList = [];
   let currentList = [];
 
@@ -70,6 +64,13 @@ if (parseData.length > 0) {
       "https://data.princegeorgescountymd.gov/resource/umjn-t2iz.json"
     );
     console.log(results);
+
+    const storedList = await results.json();
+    localStorage.setItem('storedData', JSON.strongify(storedList));
+    if (storedList.length > 0) {
+      generateListButton.classList.remove("hidden");
+    }
+
 
     const storedList = await results.json();
     localStorage.setItem('storedData', JSON.stringify(storedList));
@@ -95,9 +96,9 @@ if (parseData.length > 0) {
 
   generateListButton.addEventListener("click", (event) => {
     console.log("generate new list");
+    const recallList = localStorage.getItem('storedData')
 
-
-    currentList = cutRestaurantList(storedList);
+    currentList = cutRestaurantList(recallList);
     console.log(currentList);
     injectHTML(currentList);
   });
